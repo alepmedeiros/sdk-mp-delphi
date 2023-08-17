@@ -1,0 +1,30 @@
+unit mercdopago4D.serializable.additionalinfo;
+
+interface
+
+uses
+  System.Generics.Collections,
+  mercdopago4D.serializable.items,
+  GBJSON.Attributes;
+
+type
+  TAdditionalInfo = class
+  private
+    FItems: TObjectList<TItems>;
+  public
+    [JSONProp('items')]
+    property Items: TObjectList<TItems> read FItems write FItems;
+
+    class function New: TAdditionalInfo;
+  end;
+
+implementation
+
+{ TAdditionalInfo }
+
+class function TAdditionalInfo.New: TAdditionalInfo;
+begin
+  Result := Self.Create;
+end;
+
+end.

@@ -1,0 +1,22 @@
+unit mercdopago4D.http.interfaces;
+
+interface
+
+uses
+  System.JSON;
+
+type
+  iHttpClient = interface
+    function Get: iHttpClient; overload;
+    function Post: iHttpClient;
+    function Put: iHttpClient;
+    function Delete: iHttpClient;
+    function Params(aParams: String; Value: String): iHttpClient;
+    function Body(const Value: String): iHttpClient;
+    function Resource(const Value: String): iHttpClient;
+    function Content: String; overload;
+  end;
+
+implementation
+
+end.

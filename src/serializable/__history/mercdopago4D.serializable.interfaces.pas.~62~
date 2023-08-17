@@ -1,0 +1,51 @@
+unit mercdopago4D.serializable.interfaces;
+
+interface
+
+uses
+  System.JSON,
+  System.Generics.Collections,
+  Data.DB, mercdopago4D.serializable.devices,
+  mercdopago4D.serializable.paymentintents;
+
+type
+  iSerializable<T: Class> = interface
+    function ToJSON: TJSONObject;
+    function ToArray(Value: TObjectList<T>): TJSONArray;
+    function ToList(Value: TJSONArray): TObjectList<T>;
+    function ToObject(Value: String): T;
+  end;
+
+  iSerializableDevices = interface
+    function Id(Value: String): iSerializableDevices; overload;
+    function Id: String; overload;
+    function OperatingMode(Value: String): iSerializableDevices; overload;
+    function OperatingMode: String; overload;
+  end;
+
+  iPagging = interface
+    function Limit(Value: Integer):iPagging; overload;
+    function Limit: Integer; overload;
+    function Offset(Value: Integer):iPagging; overload;
+    function Offset: Integer; overload;
+    function Total(Value: Integer):iPagging; overload;
+    function Total: Integer; overload;
+  end;
+
+  iEvents = interface
+    function PaymentIntentId(Value: String): iEvents; overload;
+    function PaymentIntentId: String; overload;
+    function Status(Value: String): iEvents; overload;
+    function Status: String; overload;
+    function CreatedOn(Value: TDateTime): iEvents; overload;
+    function CreatedOn: TDateTime; overload;
+  end;
+
+  iSerialize = interface
+    function Device: TDevicesSerialize;
+    function PaymentIntents: TPaymentIntents;
+  end;
+
+implementation
+
+end.

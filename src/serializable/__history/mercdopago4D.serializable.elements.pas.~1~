@@ -1,0 +1,38 @@
+unit mercdopago4D.serializable.elements;
+
+interface
+
+uses
+  System.Generics.Collections,
+  GBJSON.Attributes,
+  mercdopago4D.serializable.merchantorders;
+
+type
+  TElements = class
+  private
+    FId: Integer;
+  public
+    [JSONProp('elements')]
+    property Elements: TObjectList<TMerchantOrders> read FId write FId;
+    [JSONProp('status')]
+    [JSONProp('external_reference')]
+    [JSONProp('preference_id')]
+    [JSONProp('payments')]
+    [JSONProp('shipments')]
+    [JSONProp('collector')]
+    [JSONProp('id')]
+    [JSONProp('id')]
+    [JSONProp('id')]
+    [JSONProp('id')]
+
+    class function New: TElements;
+  end;
+
+implementation
+
+class function TElements.New: TElements;
+begin
+  Result := Self.Create;
+end;
+
+end.

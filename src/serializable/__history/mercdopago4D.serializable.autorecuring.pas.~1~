@@ -1,0 +1,41 @@
+unit mercdopago4D.serializable.autorecuring;
+
+interface
+
+uses
+  GBJSON.Attributes;
+
+type
+  TAutoRecurring = class
+  private
+    FFrequency: Integer;
+    FFrequecyType: String;
+    FStartDate: String;
+    FEndDate: String;
+    FTransactionAmount: Integer;
+    FCurrencyId: String;
+  public
+    [JSONProp('frequency')]
+    property Frequency: Integer read FFrequency write FFrequency;
+    [JSONProp('frequency_type')]
+    property FrequecyType: String read FFrequecyType write FFrequecyType;
+    [JSONProp('start_date')]
+    property StartDate: String read FStartDate write FStartDate;
+    [JSONProp('end_date')]
+    property EndDate: String read FEndDate write FEndDate;
+    [JSONProp('transaction_amount')]
+    property TransactionAmount: Integer read FTransactionAmount write FTransactionAmount;
+    [JSONProp('currency_id')]
+    property CurrencyId: String read FCurrencyId write FCurrencyId;
+
+    class function New: TAutoRecurring;
+  end;
+
+implementation
+
+class function TAutoRecurring.New: TAutoRecurring;
+begin
+  Result := Self.Create;
+end;
+
+end.

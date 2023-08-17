@@ -1,0 +1,44 @@
+unit mercdopago4D.serializable.paymentintents;
+
+interface
+
+uses
+  GBJSON.Attributes,
+  mercdopago4D.serializable.additionalinfo,
+  mercdopago4D.serializable.payments;
+
+type
+  TPaymentIntents = class
+  private
+    FAdditionalInfo: TAdditionalInfo;
+    FAmount: Integer;
+    FDescription: String;
+    FPayment: TPayments;
+    FDeviceId: String;
+    FId: String;
+  public
+    [JSONProp('additional_info')]
+    property additionalinfo: TAdditionalInfo read FAdditionalInfo
+      write FAdditionalInfo;
+    [JSONProp('amount')]
+    property Amount: Integer read FAmount write FAmount;
+    [JSONProp('description')]
+    property Description: String read FDescription write FDescription;
+    [JSONProp('payment')]
+    property Payment: TPayments read FPayment write FPayment;
+    [JSONProp('id')]
+    property Id: String read FId write FId;
+    [JSONProp('device_id')]
+    property DeviceId: String read FDeviceId write FDeviceId;
+
+    class function New: TPaymentIntents;
+  end;
+
+implementation
+
+class function TPaymentIntents.New: TPaymentIntents;
+begin
+  Result := Self.Create;
+end;
+
+end.

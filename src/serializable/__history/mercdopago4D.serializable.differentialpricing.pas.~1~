@@ -1,0 +1,26 @@
+unit mercdopago4D.serializable.differentialpricing;
+
+interface
+
+uses
+  GBJSON.Attributes;
+
+type
+  TDifferenctialPricing = class
+  private
+    FId: String;
+  public
+    [JSONProp('id')]
+    property Id: String read FId write FId;
+
+    class function New: TDifferenctialPricing;
+  end;
+
+implementation
+
+class function TDifferenctialPricing.New: TDifferenctialPricing;
+begin
+  Result := Self.Create;
+end;
+
+end.

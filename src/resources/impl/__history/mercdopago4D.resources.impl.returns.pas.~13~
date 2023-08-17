@@ -1,0 +1,61 @@
+unit mercdopago4D.resources.impl.returns;
+
+interface
+
+uses
+  System.Generics.Collections,
+  Data.DB,
+  mercdopago4D.resources.interfaces;
+
+type
+  TReturns<T: Class, constructor> = class(TInterfacedObject, iReturns<T>)
+  private
+    FParent: T;
+
+    constructor Create(Parent: T);
+    destructor Destroy; override;
+  public
+    class function New(Parent: T): iReturns<T>;
+    function Serializable: T;
+    function Serializables: TObjectList<T>;
+  end;
+
+implementation
+
+uses
+  System.SysUtils,
+  System.JSON,
+  mercdopago4D.serializable;
+
+constructor TReturns<T>.Create;
+begin
+  FParent := Parent;
+end;
+
+destructor TReturns<T>.Destroy;
+begin
+
+  inherited;
+end;
+
+class function TReturns<T>.New(Parent: T): iReturns<T>;
+begin
+  Result := Self.Create(Parent);
+end;
+
+function TReturns<T>.Serializables(JSON: String): TObjectList<T>;
+begin
+  var lObj := T.Create;
+  var lSerialize := TSerializable<T>.New(FParent);
+  var lRetorno := TJSONObject.ParseJSONValue(TEncoding.ASCII.GetBytes(JSON),0) as TJSONArray;
+  Result := lSerialize.ToList(lRetorno);
+end;
+
+function TReturns<T>.Serializable(JSON: String): T;
+begin
+  var lObj := T.Create;
+  var lSerialize := TSerializable<T>.New(FParent);
+  Result := lSerialize.ToObject(JSON);
+end;
+
+end.

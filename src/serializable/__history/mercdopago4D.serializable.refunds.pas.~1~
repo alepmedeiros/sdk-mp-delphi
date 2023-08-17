@@ -1,0 +1,35 @@
+unit mercdopago4D.serializable.refunds;
+
+interface
+
+uses
+  GBJSON.Attributes;
+
+type
+  TRefunds = class
+  private
+  public
+    [JSONProp('id')]
+    [JSONProp('payment_id')]
+    [JSONProp('amount')]
+    [JSONProp('metadata')]
+    [JSONProp('source')]
+    [JSONProp('date_created')]
+    [JSONProp('unique_sequence_number')]
+    [JSONProp('refund_mode')]
+    [JSONProp('adjustment_amount')]
+    [JSONProp('status')]
+    [JSONProp('reason')]
+    [JSONProp('label')]
+    [JSONProp('partition_details')]
+    class function New: TRefunds;
+  end;
+
+implementation
+
+class function TRefunds.New: TRefunds;
+begin
+  Result := Self.Create;
+end;
+
+end.

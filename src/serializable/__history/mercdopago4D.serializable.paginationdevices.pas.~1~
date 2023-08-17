@@ -1,0 +1,32 @@
+unit mercdopago4D.serializable.paginationdevices;
+
+interface
+
+uses
+  System.Generics.Collections,
+  GBJSON.Attributes,
+  mercdopago4D.serializable.devices,
+  mercdopago4D.serializable.pagging;
+
+type
+  TPaginationDevices = class
+  private
+    FDevices: TObjectList<TDevices>;
+    FPaging: TPaging;
+  public
+    [JSONProp('devices')]
+    property Devices: TObjectList<TDevices> read FDevices write FDevices;
+    [JSONProp('paging')]
+    property Paging: TPaging read FPaging write FPaging;
+
+    class function New: TPaginationDevices;
+  end;
+
+implementation
+
+class function TPaginationDevices.New: TPaginationDevices;
+begin
+  Result := Self.Create;
+end;
+
+end.

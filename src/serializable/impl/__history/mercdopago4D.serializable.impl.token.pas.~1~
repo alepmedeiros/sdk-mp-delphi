@@ -1,0 +1,125 @@
+unit mercdopago4D.serializable.impl.token;
+
+interface
+
+uses
+  mercdopago4D.serializable.token,
+  mercdopago4D.serializable,
+  mercdopago4D.serializable.interfaces;
+
+type
+  TToken = class(TInterfacedObject, iToken)
+  private
+    FToken: TSerializable<TTokenSerialize>;
+
+    constructor Create;
+    destructor Destroy; override;
+  public
+    class function New: iToken;
+    function ClientId: String;
+    function ClientSecret: String;
+    function Code: String;
+    function GrantType: String;
+    function RedirectUri: String;
+    function RefreshToken: String;
+    function TestToken: String;
+    function AccessToken: String;
+    function TokenType: String;
+    function ExpiresIn: Integer;
+    function Scope: String;
+    function UserId: Integer;
+    function PublicKey: String;
+    function LiveMode: Boolean;
+  end;
+
+implementation
+
+{ TMyClass }
+
+function TToken.AccessToken: String;
+begin
+
+end;
+
+function TToken.ClientId: String;
+begin
+
+end;
+
+function TToken.ClientSecret: String;
+begin
+
+end;
+
+function TToken.Code: String;
+begin
+
+end;
+
+constructor TToken.Create;
+begin
+
+end;
+
+destructor TToken.Destroy;
+begin
+
+  inherited;
+end;
+
+function TToken.ExpiresIn: Integer;
+begin
+
+end;
+
+function TToken.GrantType: String;
+begin
+
+end;
+
+function TToken.LiveMode: Boolean;
+begin
+
+end;
+
+class function TToken.New: iToken;
+begin
+  Result := Self.Create;
+end;
+
+function TToken.PublicKey: String;
+begin
+
+end;
+
+function TToken.RedirectUri: String;
+begin
+
+end;
+
+function TToken.RefreshToken: String;
+begin
+
+end;
+
+function TToken.Scope: String;
+begin
+
+end;
+
+function TToken.TestToken: String;
+begin
+
+end;
+
+function TToken.TokenType: String;
+begin
+
+end;
+
+function TToken.UserId: Integer;
+begin
+
+end;
+
+end.

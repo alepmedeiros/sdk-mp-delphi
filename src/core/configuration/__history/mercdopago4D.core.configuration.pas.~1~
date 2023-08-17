@@ -1,0 +1,35 @@
+unit mercdopago4D.core.configuration;
+
+interface
+
+uses
+  mercdopago4D.interfaces;
+
+type
+  TConfiguration = class(TInterfacedObject, iConfiguration)
+  private
+    constructor Create;
+    destructor Destroy; override;
+  public
+    class function New: iConfiguration;
+  end;
+
+implementation
+
+constructor TConfiguration.Create;
+begin
+
+end;
+
+destructor TConfiguration.Destroy;
+begin
+
+  inherited;
+end;
+
+class function TConfiguration.New: iConfiguration;
+begin
+  Result := Self.Create;
+end;
+
+end.

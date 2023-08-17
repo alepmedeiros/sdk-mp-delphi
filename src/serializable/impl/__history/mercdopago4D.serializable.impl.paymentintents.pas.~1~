@@ -1,0 +1,140 @@
+unit mercdopago4D.serializable.impl.paymentintents;
+
+interface
+
+uses
+  mercdopago4D.serializable.interfaces;
+
+type
+  TSerializablePaymentIntents = class(TInterfacedObject, iSerializablePaymentIntents)
+  private
+    FAdditionalInfo: iSerializableAdditionalInfo;
+    FAmount: Integer;
+    FDescription: String;
+    FPayment: iSerializablePayment;
+    FDeviceId: String;
+    FId: String;
+    FState: String;
+    FPaymentMode: String;
+
+    constructor Create;
+    destructor Destroy; override;
+  public
+    class function New: iSerializablePaymentIntents;
+    function AdditionalInfo: iSerializableAdditionalInfo;
+    function Amount(Value: Integer): iSerializablePaymentIntents; overload;
+    function Amount: Integer overload;
+    function Description(Value: String): iSerializablePaymentIntents; overload;
+    function Description: String; overload;
+    function Payment: iSerializablePayment;
+    function DeviceId(Value: String): iSerializablePaymentIntents; overload;
+    function DeviceId: String; overload;
+    function Id(Value: String): iSerializablePaymentIntents; overload;
+    function Id: String; overload;
+    function State(Value: String): iSerializablePaymentIntents; overload;
+    function State: String; overload;
+    function PaymentMode(Value: String): iSerializablePaymentIntents; overload;
+    function PaymentMode: String; overload;
+    function &End: iSerializablePaymentIntents;
+  end;
+
+implementation
+
+function TSerializablePaymentIntents.AdditionalInfo: iSerializableAdditionalInfo;
+begin
+
+end;
+
+function TSerializablePaymentIntents.Amount(
+  Value: Integer): iSerializablePaymentIntents;
+begin
+
+end;
+
+function TSerializablePaymentIntents.Amount: Integer;
+begin
+
+end;
+
+function TSerializablePaymentIntents.&End: iSerializablePaymentIntents;
+begin
+
+end;
+
+constructor TSerializablePaymentIntents.Create;
+begin
+
+end;
+
+function TSerializablePaymentIntents.Description: String;
+begin
+
+end;
+
+function TSerializablePaymentIntents.Description(
+  Value: String): iSerializablePaymentIntents;
+begin
+
+end;
+
+destructor TSerializablePaymentIntents.Destroy;
+begin
+
+  inherited;
+end;
+
+function TSerializablePaymentIntents.DeviceId(
+  Value: String): iSerializablePaymentIntents;
+begin
+
+end;
+
+function TSerializablePaymentIntents.DeviceId: String;
+begin
+
+end;
+
+function TSerializablePaymentIntents.Id(
+  Value: String): iSerializablePaymentIntents;
+begin
+
+end;
+
+function TSerializablePaymentIntents.Id: String;
+begin
+
+end;
+
+class function TSerializablePaymentIntents.New: iSerializablePaymentIntents;
+begin
+  Result := Self.Create;
+end;
+
+function TSerializablePaymentIntents.Payment: iSerializablePayment;
+begin
+
+end;
+
+function TSerializablePaymentIntents.PaymentMode: String;
+begin
+
+end;
+
+function TSerializablePaymentIntents.PaymentMode(
+  Value: String): iSerializablePaymentIntents;
+begin
+
+end;
+
+function TSerializablePaymentIntents.State: String;
+begin
+
+end;
+
+function TSerializablePaymentIntents.State(
+  Value: String): iSerializablePaymentIntents;
+begin
+
+end;
+
+end.

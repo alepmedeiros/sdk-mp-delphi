@@ -1,0 +1,65 @@
+unit mercdopago4D.serializable.paymentintents;
+
+interface
+
+uses
+  GBJSON.Attributes,
+  mercdopago4D.serializable.additionalinfo,
+  mercdopago4D.serializable.payments;
+
+type
+  TPaymentIntents = class
+  private
+    FAdditionalInfo: TAdditionalInfo;
+    FAmount: Integer;
+    FDescription: String;
+    FPayment: TPayments;
+    FDeviceId: String;
+    FId: String;
+    FState: String;
+    FPaymentMode: String;
+  public
+    [JSONProp('additional_info')]
+    property additionalinfo: TAdditionalInfo read FAdditionalInfo
+      write FAdditionalInfo;
+    [JSONProp('amount')]
+    property Amount: Integer read FAmount write FAmount;
+    [JSONProp('description')]
+    property Description: String read FDescription write FDescription;
+    [JSONProp('payment')]
+    property Payment: TPayments read FPayment write FPayment;
+    [JSONProp('id')]
+    property Id: String read FId write FId;
+    [JSONProp('device_id')]
+    property DeviceId: String read FDeviceId write FDeviceId;
+    [JSONProp('state')]
+    property State: String read FState write FState;
+    [JSONProp('payment_mode')]
+    property PaymentMode: String read FPaymentMode write FPaymentMode;
+
+
+    constructor Create;
+    destructor Destroy; override;
+    class function New: TPaymentIntents;
+  end;
+
+implementation
+
+constructor TPaymentIntents.Create;
+begin
+  FAdditionalInfo:= TAdditionalInfo.New;
+  FPayment:= TPayments.New;
+end;
+
+destructor TPaymentIntents.Destroy;
+begin
+  FAdditionalInfo.DisposeOf;
+  inherited;
+end;
+
+class function TPaymentIntents.New: TPaymentIntents;
+begin
+  Result := Self.Create;
+end;
+
+end.

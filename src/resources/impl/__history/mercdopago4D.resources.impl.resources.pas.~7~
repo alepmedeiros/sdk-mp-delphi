@@ -1,0 +1,85 @@
+unit mercdopago4D.resources.impl.resources;
+
+interface
+
+uses
+  mercdopago4D.resources.interfaces,
+  mercdopago4D.resources.impl.oauth,
+  mercdopago4D.resources.impl.devices, mercdopago4D.resources.impl.payments,
+  mercdopago4D.resources.impl.refounds,
+  mercdopago4D.resources.impl.conciliation;
+
+type
+  TResources = class(TInterfacedObject, iResources)
+  private
+    FOAuth: iOAuth;
+    FDevices: iDevices;
+    FPayments: iPayments;
+    FRefounds: iRefounds;
+    FConciliation: iConciliation;
+
+    constructor Create;
+    destructor Destroy; override;
+  public
+    class function New: iResources;
+    function oauth: iOAuth;
+    function devices: iDevices;
+    function Payments: iPayments;
+    function Refounds: iRefounds;
+    function Conciliation: iConciliation;
+  end;
+
+implementation
+
+function TResources.Conciliation: iConciliation;
+begin
+  if not Assigned(FConciliation) then
+    FConciliation := TConciliation.New;
+  Result := FConciliation;
+end;
+
+constructor TResources.Create;
+begin
+
+end;
+
+destructor TResources.Destroy;
+begin
+
+  inherited;
+end;
+
+function TResources.devices: iDevices;
+begin
+  if not Assigned(FDevices) then
+    FDevices := TDevices.New;
+  Result := FDevices
+end;
+
+class function TResources.New: iResources;
+begin
+  Result := Self.Create;
+end;
+
+function TResources.oauth: iOAuth;
+begin
+  if not Assigned(FOAuth) then
+    FOAuth := TOAuth.New;
+  Result := FOAuth;
+end;
+
+function TResources.Payments: iPayments;
+begin
+  if not Assigned(FPayments) then
+    FPayments := TPayments.New;
+  Result := FPayments;
+end;
+
+function TResources.Refounds: iRefounds;
+begin
+  if not Assigned(FRefounds) then
+    FRefounds := TRefounds.New;
+  Result := FRefounds;
+end;
+
+end.

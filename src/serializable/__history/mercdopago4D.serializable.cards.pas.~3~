@@ -1,0 +1,47 @@
+unit mercdopago4D.serializable.cards;
+
+interface
+
+uses
+  GBJSON.Attributes, mercdopago4D.serializable.cardholder;
+
+type
+  TCards = class
+  private
+    FId: String;
+    FFirstSixDigits: String;
+    FLastFourDigits: String;
+    FExpirationMonth: Integer;
+    FExpitarionYear: Integer;
+    FDateCreated: String;
+    FDateLastUpdated: String;
+    FCardHolder: TCardHolder;
+  public
+    [JSONProp('id')]
+    property Id: String read FId write FId;
+    [JSONProp('first_six_digits')]
+    property FirstSixDigits: String read FFirstSixDigits write FFirstSixDigits;
+    [JSONProp('last_four_digits')]
+    property LastFourDigits: String read FLastFourDigits write FLastFourDigits;
+    [JSONProp('expiration_month')]
+    property ExpirationMonth: Integer read FExpirationMonth write FExpirationMonth;
+    [JSONProp('expiration_year')]
+    property ExpitarionYear: Integer read FExpitarionYear write FExpitarionYear;
+    [JSONProp('date_created')]
+    property DateCreated: String read FDateCreated write FDateCreated;
+    [JSONProp('date_last_updated')]
+    property DateLastUpdated: String read FDateLastUpdated write FDateLastUpdated;
+    [JSONProp('cardholder')]
+    property CardHolder: TCardHolder read FCardHolder write FCardHolder;
+
+    class function New: TCards;
+  end;
+
+implementation
+
+class function TCards.New: TCards;
+begin
+  Result := Self.Create;
+end;
+
+end.

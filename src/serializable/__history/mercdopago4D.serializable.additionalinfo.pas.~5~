@@ -1,0 +1,41 @@
+unit mercdopago4D.serializable.additionalinfo;
+
+interface
+
+uses
+  System.Generics.Collections,
+  mercdopago4D.serializable.items,
+  GBJSON.Attributes, mercdopago4D.serializable.payers,
+  mercdopago4D.serializable.shipments;
+
+type
+  TAdditionalInfo = class
+  private
+    FItems: TObjectList<TItems>;
+    FIpAddress: String;
+    FPayer: TPayers;
+    FShipments: TShipments;
+  public
+    [JSONProp('items')]
+    property Items: TObjectList<TItems> read FItems write FItems;
+    [JSONProp('ip_address')]
+    property IpAddress: String read FIpAddress write FIpAddress;
+    [JSONProp('payer')]
+    property Payer: TPayers read FPayer write FPayer;
+    [JSONProp('shipments')]
+    property Shipments: TShipments read FShipments write FShipments;
+
+
+    class function New: TAdditionalInfo;
+  end;
+
+implementation
+
+{ TAdditionalInfo }
+
+class function TAdditionalInfo.New: TAdditionalInfo;
+begin
+  Result := Self.Create;
+end;
+
+end.

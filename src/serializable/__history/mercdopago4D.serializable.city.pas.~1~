@@ -1,0 +1,25 @@
+unit mercdopago4D.serializable.city;
+
+interface
+
+uses
+  GBJSON.Attributes;
+
+type
+  TCity = class
+  private
+  public
+    [JSONProp('name')]
+    property Name: String read FName write FName;
+
+    class function New: TMyClass;
+  end;
+
+implementation
+
+class function TMyClass.New: TMyClass;
+begin
+  Result := Self.Create;
+end;
+
+end.

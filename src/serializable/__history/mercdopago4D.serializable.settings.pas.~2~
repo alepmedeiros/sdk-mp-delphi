@@ -1,0 +1,27 @@
+unit mercdopago4D.serializable.settings;
+
+interface
+
+uses
+  GBJSON.Attributes,
+  mercdopago4D.serializable.bin;
+
+type
+  TSettings = class
+  private
+    FBin: TBin;
+  public
+    [JSONProp('bin')]
+    property Bin: TBin read FBin write FBin;
+
+    class function New: TSettings;
+  end;
+
+implementation
+
+class function TSettings.New: TSettings;
+begin
+  Result := Self.Create;
+end;
+
+end.

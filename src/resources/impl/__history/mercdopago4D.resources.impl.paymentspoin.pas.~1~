@@ -1,0 +1,62 @@
+unit mercdopago4D.resources.impl.payments;
+
+interface
+
+uses
+  mercdopago4D.resources.interfaces, mercdopago4D.interfaces;
+
+type
+  TPayments = class(TInterfacedObject, iPayments)
+  private
+    FConf: iConfiguration;
+
+    constructor Create(Conf: iConfiguration);
+    destructor Destroy; override;
+  public
+    class function New(Conf: iConfiguration): iPayments;
+    function CreatePayment: iPayments;
+    function CancelPayment: iPayments;
+    function SearchPayment: iPayments;
+    function SearchPaymentToDate: iPayments;
+  end;
+
+implementation
+
+
+function TPayments.CancelPayment: iPayments;
+begin
+  Result := Self;
+end;
+
+constructor TPayments.Create(Conf: iConfiguration);
+begin
+  FConf := Conf;
+end;
+
+function TPayments.CreatePayment: iPayments;
+begin
+  Result := Self;
+end;
+
+destructor TPayments.Destroy;
+begin
+
+  inherited;
+end;
+
+class function TPayments.New(Conf: iConfiguration): iPayments;
+begin
+  Result := Self.Create(Conf);
+end;
+
+function TPayments.SearchPayment: iPayments;
+begin
+  Result := Self;
+end;
+
+function TPayments.SearchPaymentToDate: iPayments;
+begin
+  Result := Self;
+end;
+
+end.

@@ -1,0 +1,24 @@
+unit mercdopago4D.serializable.items;
+
+interface
+
+uses
+  GBJSON.Attributes;
+
+type
+  TItems = class
+  private
+  public
+    class function New: TItems;
+  end;
+
+implementation
+
+{ TItems }
+
+class function TItems.New: TItems;
+begin
+  Result := Self.Create;
+end;
+
+end.

@@ -1,0 +1,104 @@
+unit mercdopago4D.resources.impl.oauth;
+
+interface
+
+uses
+  Data.DB,
+  System.Generics.Collections,
+  mercdopago4D.resources.interfaces,
+  mercdopago4D.http.interfaces, mercdopago4D.http.httpclient,
+  mercdopago4D.resources.enums, mercdopago4D.interfaces,
+  mercdopago4D.serializable.token, mercdopago4D.serializable.interfaces;
+
+type
+  TOAuth = class(TInterfacedObject, iOAuth)
+  private
+    FConf: iConfiguration;
+
+    FHttpCliente: iHttpClient;
+    FToke: TTokenSerialize;
+    FSerializable: iSerializable<TTokenSerialize>;
+
+    constructor Create(Conf: iConfiguration);
+    destructor Destroy; override;
+  public
+    class function New(Conf: iConfiguration): iOAuth;
+    function GenerateToken: iOAuth;
+    function RefreshToken: iOAuth;
+    function Serializable: TTokenSerialize;
+    function Serializables: TObjectList<TTokenSerialize>;
+    function DataSet: TDataSet;
+  end;
+
+implementation
+
+uses
+  System.JSON,
+  System.SysUtils,
+  mercdopago4D.serializable;
+
+constructor TOAuth.Create(Conf: iConfiguration);
+begin
+  FConf := Conf;
+  FHttpCliente := THttpClient.New(TBaseURL.BASEURL.ToString);
+  FToke:= TTokenSerialize.New;
+  FSerializable:= TSerializable<TTokenSerialize>.NEw(FToke);
+end;
+
+function TOAuth.DataSet: TDataSet;
+begin
+  Result := FHttpCliente.DataSet;
+end;
+
+destructor TOAuth.Destroy;
+begin
+
+  inherited;
+end;
+
+function TOAuth.GenerateToken: iOAuth;
+begin
+  Result := Self;
+
+  FHttpCliente
+    .Resource(TResource.OAUTH.ToString)
+    .Header('Content-Type','application/x-www-form-urlencoded')
+    .Params('grant_type','authorization_code')
+    .Params('client_secret', FConf.ClientSecret)
+    .Params('client_id', FConf.ClientId)
+    .Params('code', FConf.Code)
+    .Params('redirect_uri', FConf.RedirectURI)
+    .Post;
+end;
+
+class function TOAuth.New(Conf: iConfiguration): iOAuth;
+begin
+  Result := Self.Create(Conf);
+end;
+
+function TOAuth.RefreshToken: iOAuth;
+begin
+  Result := Self;
+
+  FHttpCliente
+    .Resource(TResource.OAUTH.ToString)
+    .Header('Content-Type','application/x-www-form-urlencoded')
+    .Params('grant_type','refresh_token')
+    .Params('client_secret', FConf.ClientSecret)
+    .Params('client_id', FConf.ClientId)
+    .Params('redirect_uri', FConf.RedirectURI)
+    .Post;
+end;
+
+function TOAuth.Serializable: TTokenSerialize;
+begin
+  Result := FSerializable.ToObject(FHttpCliente.Content);
+end;
+
+function TOAuth.Serializables: TObjectList<TTokenSerialize>;
+begin
+  var lRetorno := TJSONObject.ParseJSONValue(TEncoding.ASCII.GetBytes(FHttpCliente.Content),0) as TJSONArray;
+  Result := FSerializable.ToList(lRetorno);
+end;
+
+end.

@@ -1,0 +1,48 @@
+unit mercdopago4D;
+
+interface
+
+uses
+  mercdopago4D.interfaces;
+
+type
+  TMP4D = class(TInterfacedObject, iMP4D)
+  private
+    FConf: iConfiguration;
+
+    constructor Create;
+    destructor Destroy; override;
+  public
+    class function New: iMP4D;
+
+    function Configuration: iConfiguration;
+  end;
+
+implementation
+
+uses
+  mercdopago4D.core.configuration;
+
+function TMP4D.Configuration: iConfiguration;
+begin
+  if not Assigned(FConf) then
+    FConf := TConfiguration.New;
+  Result := FConf;
+end;
+
+constructor TMP4D.Create;
+begin
+end;
+
+destructor TMP4D.Destroy;
+begin
+
+  inherited;
+end;
+
+class function TMP4D.New: iMP4D;
+begin
+  Result := Self.Create;
+end;
+
+end.

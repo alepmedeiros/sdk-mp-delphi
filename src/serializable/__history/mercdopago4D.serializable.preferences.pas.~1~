@@ -1,0 +1,67 @@
+unit mercdopago4D.serializable.preferences;
+
+interface
+
+uses
+  System.Generics.Collections,
+  GBJSON.Attributes,
+  mercdopago4D.serializable.backurl,
+  mercdopago4D.serializable.differentialpricing,
+  mercdopago4D.serializable.items;
+
+type
+  TPreferences = class
+  private
+    FAdditionalInfo: String;
+    FAutoReturn: String;
+    FBackUrls: TBackUrl;
+    FDateOfExpiration: String;
+    FDifferentialPricing: TDifferentialPricing;
+    FExpirationDateFrom: String;
+    FExpirationDateTo: String;
+    FExpires: Boolean;
+    FExternalReference: String;
+    FItems: TObjectList<TItems>;
+  public
+    [JSONProp('additional_info')]
+    property AdditionalInfo: String read FAdditionalInfo write FAdditionalInfo;
+    [JSONProp('auto_return')]
+    property AutoReturn: String read FAutoReturn write FAutoReturn;
+    [JSONProp('back_urls')]
+    property BackUrls: TBackUrl read FBackUrls write FBackUrls;
+    [JSONProp('date_of_expiration')]
+    property DateOfExpiration: String read FDateOfExpiration write FDateOfExpiration;
+    [JSONProp('differential_pricing')]
+    property DifferentialPricing: TDifferentialPricing read FDifferentialPricing write FDifferentialPricing;
+    [JSONProp('expiration_date_from')]
+    property ExpirationDateFrom: String read FExpirationDateFrom write FExpirationDateFrom;
+    [JSONProp('expiration_date_to')]
+    property ExpirationDateTo: String read FExpirationDateTo write FExpirationDateTo;
+    [JSONProp('expires')]
+    property Expires: Boolean read FExpires write FExpires;
+    [JSONProp('external_reference')]
+    property ExternalReference: String read FExternalReference write FExternalReference;
+    [JSONProp('items')]
+    property Items: TObjectList<TItems> read FItems write FItems;
+    [JSONProp('marketplace')]
+    [JSONProp('marketplace_fee')]
+    [JSONProp('metadata')]
+    [JSONProp('notification_url')]
+    [JSONProp('payer')]
+    [JSONProp('payment_methods')]
+    [JSONProp('shipments')]
+    [JSONProp('statement_descriptor')]
+    [JSONProp('tracks')]
+
+
+    class function New: TPreferences;
+  end;
+
+implementation
+
+class function TPreferences.New: TPreferences;
+begin
+  Result := Self.Create;
+end;
+
+end.

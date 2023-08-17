@@ -1,0 +1,48 @@
+unit mercdopago4D.resources.impl.conciliation;
+
+interface
+
+uses
+  mercdopago4D.resources.interfaces;
+
+type
+  TConciliation = class(TInterfacedObject, iConciliation)
+  private
+
+    constructor Create;
+    destructor Destroy; override;
+  public
+    class function New: iConciliation;
+    function GetPayments: iConciliation;
+    function LastStatus: iConciliation;
+  end;
+
+implementation
+
+constructor TConciliation<T>.Create(Parent: T);
+begin
+  FParent := Parent;
+end;
+
+destructor TConciliation<T>.Destroy;
+begin
+
+  inherited;
+end;
+
+function TConciliation<T>.GetPayments: iConciliation<T>;
+begin
+  Result := Self;
+end;
+
+function TConciliation<T>.LastStatus: iConciliation<T>;
+begin
+  Result := Self;
+end;
+
+class function TConciliation<T>.New(Parent: T): iConciliation<T>;
+begin
+  Result := Self.Create(Parent);
+end;
+
+end.

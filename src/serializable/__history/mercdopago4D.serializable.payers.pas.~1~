@@ -1,0 +1,21 @@
+unit mercdopago4D.serializable.payers;
+
+interface
+
+type
+  TPayers = class
+  private
+  public
+    class function New: TPayers;
+  end;
+
+implementation
+
+{ TPayers }
+
+class function TPayers.New: TPayers;
+begin
+  Result := Self.Create;
+end;
+
+end.

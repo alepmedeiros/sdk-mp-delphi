@@ -1,0 +1,23 @@
+unit mercdopago4D.serializable.token;
+
+interface
+
+uses
+  GBJSON.Attributes;
+
+type
+  TToken = class
+  private
+  public
+
+    class function New: TToken;
+  end;
+
+implementation
+
+class function TToken.New: TToken;
+begin
+  Result := Self.Create;
+end;
+
+end.

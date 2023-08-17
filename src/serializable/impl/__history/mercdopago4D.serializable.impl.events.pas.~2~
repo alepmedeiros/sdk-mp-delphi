@@ -1,0 +1,77 @@
+unit mercdopago4D.serializable.impl.events;
+
+interface
+
+uses
+  mercdopago4D.serializable.interfaces,
+  mercdopago4D.serializable.events;
+
+type
+  TEvents = class(TInterfacedObject, iEvents)
+  private
+    FEvents: TSerializeEvents;
+
+    constructor Create;
+    destructor Destroy; override;
+  public
+    class function New: iEvents;
+    function PaymentIntentId(Value: String): iEvents; overload;
+    function PaymentIntentId: String; overload;
+    function Status(Value: String): iEvents; overload;
+    function Status: String; overload;
+    function CreatedOn(Value: String): iEvents; overload;
+    function CreatedOn: TDateTime; overload;
+  end;
+
+implementation
+
+uses
+  System.DateUtils;
+
+constructor TEvents.Create;
+begin
+  FEvents := TSerializeEvents.New;
+end;
+
+function TEvents.CreatedOn: TDateTime;
+begin
+  Result := ISO8601ToDate(FEvents.CreatedOn);
+end;
+
+function TEvents.CreatedOn(Value: String): iEvents;
+begin
+
+end;
+
+destructor TEvents.Destroy;
+begin
+  FEvents.DisposeOf;
+  inherited;
+end;
+
+class function TEvents.New: iEvents;
+begin
+  Result := Self.Create;
+end;
+
+function TEvents.PaymentIntentId(Value: String): iEvents;
+begin
+
+end;
+
+function TEvents.PaymentIntentId: String;
+begin
+
+end;
+
+function TEvents.Status(Value: String): iEvents;
+begin
+
+end;
+
+function TEvents.Status: String;
+begin
+
+end;
+
+end.

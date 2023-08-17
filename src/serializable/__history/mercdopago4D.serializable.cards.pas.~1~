@@ -1,0 +1,19 @@
+unit mercdopago4D.serializable.cards;
+
+interface
+
+type
+  TCards = class
+  private
+  public
+    class function New: TCards;
+  end;
+
+implementation
+
+class function TCards.New: TCards;
+begin
+  Result := Self.Create;
+end;
+
+end.

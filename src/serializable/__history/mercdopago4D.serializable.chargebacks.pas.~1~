@@ -1,0 +1,44 @@
+unit mercdopago4D.serializable.chargebacks;
+
+interface
+
+uses
+  System.Generics.Collections,
+  GBJSON.Attributes,
+  mercdopago4D.serializable.payments;
+
+type
+  TChargebacks = class
+  private
+    FId: String;
+    FPayments: TObjectList<TPayments>;
+    FCurrency: String;
+  public
+    [JSONProp('id')]
+    property Id: String read FId write FId;
+    [JSONProp('payments')]
+    property Payments: TObjectList<TPayments> read FPayments write FPayments;
+    [JSONProp('currency')]
+    property &Currency: String read FCurrency write FCurrency;
+    [JSONProp('amount')]
+    [JSONProp('coverage_applied')]
+    [JSONProp('coverage_elegible')]
+    [JSONProp('documentation_required')]
+    [JSONProp('documentation_status')]
+    [JSONProp('documentation')]
+    [JSONProp('date_documentation_deadline')]
+    [JSONProp('date_created')]
+    [JSONProp('date_last_updated')]
+    [JSONProp('live_mode')]
+
+    class function New: TChargebacks;
+  end;
+
+implementation
+
+class function TChargebacks.New: TChargebacks;
+begin
+  Result := Self.Create;
+end;
+
+end.

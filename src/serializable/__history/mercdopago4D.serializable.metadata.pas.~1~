@@ -1,0 +1,26 @@
+unit mercdopago4D.serializable.metadata;
+
+interface
+
+uses
+  GBJSON.Attributes;
+
+type
+  TMetadata = class
+  private
+    FSourceSync: String;
+  public
+    [JSONProp('source_sync')]
+    property SourceSync: String read FSourceSync write FSourceSync;
+
+    class function New: TMetadata;
+  end;
+
+implementation
+
+class function TMetadata.New: TMetadata;
+begin
+  Result := Self.Create;
+end;
+
+end.

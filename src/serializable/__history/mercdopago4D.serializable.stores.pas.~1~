@@ -1,0 +1,43 @@
+unit mercdopago4D.serializable.stores;
+
+interface
+
+uses
+  GBJSON.Attributes;
+
+type
+  TStores = class
+  private
+
+    constructor Create;
+    destructor Destroy; override;
+  public
+    [JSONProp('id')]
+    [JSONProp('name')]
+    [JSONProp('date_creation')]
+    [JSONProp('business_hours')]
+    [JSONProp('location')]
+    [JSONProp('external_id')]
+
+    class function New: TStores;
+  end;
+
+implementation
+
+constructor TStores.Create;
+begin
+
+end;
+
+destructor TStores.Destroy;
+begin
+
+  inherited;
+end;
+
+class function TStores.New: TStores;
+begin
+  Result := Self.Create;
+end;
+
+end.

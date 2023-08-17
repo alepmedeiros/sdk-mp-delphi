@@ -1,0 +1,82 @@
+unit mercdopago4D.serializable.impl.pagging;
+
+interface
+
+uses
+  mercdopago4D.serializable.interfaces;
+
+type
+  TPagging<T: IInterface> = class(TInterfacedObject, iPagging<T>)
+  private
+    [waek]
+    FParent: T;
+
+    FLimit: Integer;
+    FOffset: Integer;
+    FTotal: Integer;
+
+    constructor Create(Parent: T);
+    destructor Destroy; override;
+  public
+    class function New(Parent: T): iPagging<T>;
+
+    function Limit(Value: Integer):iPagging<T>; overload;
+    function Limit: Integer; overload;
+    function Offset(Value: Integer):iPagging<T>; overload;
+    function Offset: Integer; overload;
+    function Total(Value: Integer):iPagging<T>; overload;
+    function Total: Integer; overload;
+  end;
+
+implementation
+
+constructor TPagging<T>.Create(Parent: T);
+begin
+  FParent := Parent;
+end;
+
+destructor TPagging<T>.Destroy;
+begin
+
+  inherited;
+end;
+
+function TPagging<T>.Limit(Value: Integer): iPagging<T>;
+begin
+  Result := Self;
+  FLimit := Value;
+end;
+
+function TPagging<T>.Limit: Integer;
+begin
+  Result := FLimit;
+end;
+
+class function TPagging<T>.New(Parent: T): iPagging<T>;
+begin
+  Result := Self.Create(Parent);
+end;
+
+function TPagging<T>.Offset: Integer;
+begin
+  Result := FOffset;
+end;
+
+function TPagging<T>.Offset(Value: Integer): iPagging<T>;
+begin
+  Result := Self;
+  FOffset := Value;
+end;
+
+function TPagging<T>.Total(Value: Integer): iPagging<T>;
+begin
+  Result := Self;
+  FTotal := Value;
+end;
+
+function TPagging<T>.Total: Integer;
+begin
+  Result := FTotal;
+end;
+
+end.

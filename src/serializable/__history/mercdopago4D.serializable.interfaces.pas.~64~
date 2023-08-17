@@ -1,0 +1,63 @@
+unit mercdopago4D.serializable.interfaces;
+
+interface
+
+uses
+  System.JSON,
+  System.Generics.Collections,
+  Data.DB, mercdopago4D.serializable.devices,
+  mercdopago4D.serializable.paymentintents;
+
+type
+  iSerializable<T: Class> = interface
+    function ToJSON: TJSONObject;
+    function ToArray(Value: TObjectList<T>): TJSONArray;
+    function ToList(Value: TJSONArray): TObjectList<T>;
+    function ToObject(Value: String): T;
+  end;
+
+  iSerializableDevices = interface
+    function Id(Value: String): iSerializableDevices; overload;
+    function Id: String; overload;
+    function OperatingMode(Value: String): iSerializableDevices; overload;
+    function OperatingMode: String; overload;
+  end;
+
+  iSerializablePayment = interface
+    function Installments(Value: Integer): iSerializablePayment; overload;
+    function Installments: Integer; overload;
+    function &Type(Value: String): iSerializablePayment; overload;
+    function &Type: String; overload;
+    function InstallmentsCost(Value: String): iSerializablePayment; overload;
+    function InstallmentsCost: String; overload;
+    function VoucherType(Value: String): iSerializablePayment; overload;
+    function VoucherType: String; overload;
+    function Id(Value: String): iSerializablePayment; overload;
+    function Id: String; overload;
+  end;
+
+  iSerializableAdditionalInfo = interface
+    FExternalReference: String;
+    FPrintOnTerminal: Boolean;
+    FTicketNumber: String;
+  end;
+
+  iSerializablePaymentIntents = interface
+    FAdditionalInfo: TAdditionalInfo;
+    FAmount: Integer;
+    FDescription: String;
+    FPayment: TPayment;
+    FDeviceId: String;
+    FId: String;
+    FState: String;
+    FPaymentMode: String;
+  end;
+
+  iSerialize = interface
+    function Device: iSerializableDevices;
+    function PaymentIntents: TPaymentIntents;
+  end;
+
+implementation
+
+end.

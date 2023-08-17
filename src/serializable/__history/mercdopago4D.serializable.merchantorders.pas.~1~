@@ -1,0 +1,43 @@
+unit mercdopago4D.serializable.merchantorders;
+
+interface
+
+uses
+  System.Generics.Collections,
+  GBJSON.Attributes,
+  mercdopago4D.serializable.items;
+
+type
+  TMerchantOrders = class
+  private
+    FAdditionalInfo: String;
+    FApplicationId: String;
+    FExternalreference: String;
+    FItems: TObjectList<TItems>;
+  public
+    [JSONProp('additional_info')]
+    property AdditionalInfo: String read FAdditionalInfo write FAdditionalInfo;
+    [JSONProp('application_id')]
+    property ApplicationId: String read FApplicationId write FApplicationId;
+    [JSONProp('external_reference')]
+    property Externalreference: String read FExternalreference write FExternalreference;
+    [JSONProp('items')]
+    property Items: TObjectList<TItems> read FItems write FItems;
+    [JSONProp('marketplace')]
+    [JSONProp('notification_url')]
+    [JSONProp('payer')]
+    [JSONProp('preference_id')]
+    [JSONProp('site_id')]
+    [JSONProp('sponsor_id')]
+
+    class function New: TMerchantOrders;
+  end;
+
+implementation
+
+class function TMerchantOrders.New: TMerchantOrders;
+begin
+  Result := Self.Create;
+end;
+
+end.

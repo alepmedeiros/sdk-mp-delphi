@@ -1,0 +1,90 @@
+unit mercdopago4D.resources.impl.resources;
+
+interface
+
+uses
+  mercdopago4D.resources.interfaces,
+  mercdopago4D.resources.impl.oauth,
+  mercdopago4D.resources.impl.devices, mercdopago4D.resources.impl.payments,
+  mercdopago4D.resources.impl.refounds,
+  mercdopago4D.resources.impl.conciliation;
+
+type
+  TResources = class(TInterfacedObject, iResources)
+  private
+    FOAuth: iOAuth<iResources>;
+    FDevices: iDevices<iResources>;
+    FPayments: iPayments<iResources>;
+    FRefounds: iRefounds<iResources>;
+    FConciliation: iConciliation<iResources>;
+  public
+    constructor Create;
+    destructor Destroy; override;
+    class function New: iResources;
+    function oauth: iOAuth<iResources>;
+    function devices: iDevices<iResources>;
+    function Payments: iPayments<iResources>;
+    function Refounds: iRefounds<iResources>;
+    function Conciliation: iConciliation<iResources>;
+    function &End: iResources;
+  end;
+
+implementation
+
+function TResources.Conciliation: iConciliation<iResources>;
+begin
+  if not Assigned(FConciliation) then
+    FConciliation := TConciliation<iResources>.New(Self);
+  Result := FConciliation;
+end;
+
+function TResources.&End: iResources;
+begin
+  Result := Self;
+end;
+
+constructor TResources.Create;
+begin
+
+end;
+
+destructor TResources.Destroy;
+begin
+
+  inherited;
+end;
+
+function TResources.devices: iDevices<iResources>;
+begin
+  if not Assigned(FDevices) then
+    FDevices := TDevices<iResources>.New(Self);
+  Result := FDevices
+end;
+
+class function TResources.New: iResources;
+begin
+  Result := Self.Create;
+end;
+
+function TResources.oauth: iOAuth<iResources>;
+begin
+  if not Assigned(FOAuth) then
+    FOAuth := TOAuth<iResources>.New(Self);
+  Result := FOAuth;
+end;
+
+function TResources.Payments: iPayments<iResources>;
+begin
+  if not Assigned(FPayments) then
+    FPayments := TPayments<iResources>.New(Self);
+  Result := FPayments;
+end;
+
+function TResources.Refounds: iRefounds<iResources>;
+begin
+  if not Assigned(FRefounds) then
+    FRefounds := TRefounds<iResources>.New(Self);
+  Result := FRefounds;
+end;
+
+end.

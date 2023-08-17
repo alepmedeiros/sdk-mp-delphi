@@ -1,0 +1,24 @@
+unit mercdopago4D.serializable.additionalinfo;
+
+interface
+
+uses
+  GBJSON.Attributes;
+
+type
+  TAdditionalInfo = class
+  private
+  public
+    class function New: TAdditionalInfo;
+  end;
+
+implementation
+
+{ TAdditionalInfo }
+
+class function TAdditionalInfo.New: TAdditionalInfo;
+begin
+  Result := Self.Create;
+end;
+
+end.

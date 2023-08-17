@@ -1,0 +1,44 @@
+unit mercdopago4D.serializable.pointofinteraction;
+
+interface
+
+uses
+  GBJSON.Attributes,
+  mercdopago4D.serializable.BusinessInfo;
+
+type
+  TPontOfInteraction = class
+  private
+    FType: String;
+    FBusinessInfo: TObjectList<TBusinessInfo>;
+
+    constructor Create;
+    destructor Destroy; override;
+  public
+    [JSONProp('type')]
+    property &Type: String read FType write FType;
+    [JSONProp('business_info')]
+    property BusinessInfo: TObjectList<TBusinessInfo> read FBusinessInfo write FBusinessInfo;
+
+    class function New: TPontOfInteraction;
+  end;
+
+implementation
+
+constructor TPontOfInteraction.Create;
+begin
+  FBusinessInfo:= TObjectList<TBusinessInfo>.Create;
+end;
+
+destructor TPontOfInteraction.Destroy;
+begin
+  FBusinessInfo.DisposeOf;
+  inherited;
+end;
+
+class function TPontOfInteraction.New: TPontOfInteraction;
+begin
+  Result := Self.Create;
+end;
+
+end.

@@ -1,0 +1,23 @@
+unit mercdopago4D.serializable.bin;
+
+interface
+
+uses
+  GBJSON.Attributes;
+
+type
+  TBin = class
+  private
+  public
+
+    class function New: TBin;
+  end;
+
+implementation
+
+class function TBin.New: TBin;
+begin
+  Result := Self.Create;
+end;
+
+end.

@@ -1,0 +1,33 @@
+unit mercdopago4D.serializable.pos;
+
+interface
+
+uses
+  GBJSON.Attributes;
+
+type
+  TPos = class
+  private
+  public
+    [JSONProp('category')]
+    [JSONProp('external_id')]
+    [JSONProp('external_store_id')]
+    [JSONProp('fixed_amount')]
+    [JSONProp('name')]
+    [JSONProp('store_id')]
+    [JSONProp('url')]
+    [JSONProp('id')]
+    [JSONProp('qr')]
+    [JSONProp('status')]
+    [JSONProp('date_created')]
+    class function New: TPos;
+  end;
+
+implementation
+
+class function TPos.New: TPos;
+begin
+  Result := Self.Create;
+end;
+
+end.

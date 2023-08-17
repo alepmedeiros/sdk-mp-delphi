@@ -1,0 +1,48 @@
+unit mercdopago4D.serializable.preapproval;
+
+interface
+
+uses
+  System.Generics.Collections,
+  GBJSON.Attributes, mercdopago4D.serializable.autorecuring;
+
+type
+  TPreapproval = class
+  private
+    FAutoRecurring: TAutoRecurring;
+    FBackUrl: String;
+    FCardTokenId: String;
+    FExternalReference: String;
+    FPayerEmail: String;
+    FOreapprovalPlanId: String;
+    FReason: String;
+    FStatus: String;
+  public
+    [JSONProp('auto_recurring')]
+    property AutoRecurring: TAutoRecurring read FAutoRecurring write FAutoRecurring;
+    [JSONProp('back_url')]
+    property BackUrl: String read FBackUrl write FBackUrl;
+    [JSONProp('card_token_id')]
+    property CardTokenId: String read FCardTokenId write FCardTokenId;
+    [JSONProp('external_reference')]
+    property ExternalReference: String read FExternalReference write FExternalReference;
+    [JSONProp('payer_email')]
+    property PayerEmail: String read FPayerEmail write FPayerEmail;
+    [JSONProp('preapproval_plan_id')]
+    property OreapprovalPlanId: String read FOreapprovalPlanId write FOreapprovalPlanId;
+    [JSONProp('reason')]
+    property Reason: String read FReason write FReason;
+    [JSONProp('status')]
+    property Status: String read FStatus write FStatus;
+
+    class function New: TPreapproval;
+  end;
+
+implementation
+
+class function TPreapproval.New: TPreapproval;
+begin
+  Result := Self.Create;
+end;
+
+end.

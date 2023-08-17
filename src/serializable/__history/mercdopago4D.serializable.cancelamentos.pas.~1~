@@ -1,0 +1,23 @@
+unit mercdopago4D.serializable.cancelamentos;
+
+interface
+
+type
+  TCancelamentos = class
+  private
+    FStatus: String;
+  public
+    property Status: String read FStatus write FStatus;
+    class function New: TCancelamentos;
+  end;
+
+implementation
+
+{ TCancelamentos }
+
+class function TCancelamentos.New: TCancelamentos;
+begin
+  Result := Self.Create;
+end;
+
+end.

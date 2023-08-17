@@ -1,0 +1,70 @@
+unit mercdopago4D.serializable.impl.devices;
+
+interface
+
+uses
+  mercdopago4D.serializable.interfaces;
+
+type
+  TDevices<T: IInterface> = class(TInterfacedObject, iDevices<T>)
+  private
+    [waek]
+    FParent: T;
+
+    FId: String;
+    FOperatingMode: String;
+
+    constructor Create(Parent: T);
+    destructor Destroy; override;
+  public
+    class function New(Parent: T): iDevices<T>;
+
+    function Id(Value: String): iDevices<T>; overload;
+    function Id: String; overload;
+    function OperatingMode(Value: String): iDevices<T>; overload;
+    function OperatingMode: String; overload;
+  end;
+
+implementation
+
+{ TMyClass }
+
+constructor TDevices<T>.Create(Parent: T);
+begin
+  FParent := Parent;
+end;
+
+destructor TDevices<T>.Destroy;
+begin
+
+  inherited;
+end;
+
+function TDevices<T>.Id(Value: String): iDevices<T>;
+begin
+  Result := Self;
+  FId := Value;
+end;
+
+function TDevices<T>.Id: String;
+begin
+  Result := FId;
+end;
+
+class function TDevices<T>.New(Parent: T): iDevices<T>;
+begin
+  Result := Self.Create(Parent);
+end;
+
+function TDevices<T>.OperatingMode(Value: String): iDevices<T>;
+begin
+  Result := Self;
+  FOperatingMode := Value;
+end;
+
+function TDevices<T>.OperatingMode: String;
+begin
+  Result := FOperatingMode;
+end;
+
+end.

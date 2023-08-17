@@ -1,0 +1,21 @@
+unit mercdopago4D.serializable.identification;
+
+interface
+
+type
+  TIdentification = class
+  private
+  public
+    class function New: TIdentification;
+  end;
+
+implementation
+
+{ TIdentification }
+
+class function TIdentification.New: TIdentification;
+begin
+  Result := Self.Create;
+end;
+
+end.

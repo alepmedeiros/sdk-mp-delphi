@@ -1,0 +1,23 @@
+unit mercdopago4D.serializable.cardnumber;
+
+interface
+
+uses
+  GBJSON.Attributes;
+
+type
+  TCardNumber = class
+  private
+  public
+
+    class function New: TCardNumber;
+  end;
+
+implementation
+
+class function TCardNumber.New: TCardNumber;
+begin
+  Result := Self.Create;
+end;
+
+end.

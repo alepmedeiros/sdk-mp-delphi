@@ -1,0 +1,120 @@
+unit mercdopago4D.core.configuration;
+
+interface
+
+uses
+  mercdopago4D.interfaces;
+
+type
+  TConfiguration = class(TInterfacedObject, iConfiguration)
+  private
+    FClientId: String;
+    FClientSecret: String;
+    FCode: String;
+    FGrantType: String;
+    FRedirectURI: String;
+    FRefreshToken: String;
+    FTestToken: String;
+  public
+    class function New: iConfiguration;
+    function ClientId(Value: String): iConfiguration; overload;
+    function ClientId: String; overload;
+    function ClientSecret(Value: String): iConfiguration; overload;
+    function ClientSecret: String; overload;
+    function Code(Value: String): iConfiguration; overload;
+    function Code: String; overload;
+    function GrantType(Value: String): iConfiguration; overload;
+    function GrantType: String; overload;
+    function RedirectURI(Value: String): iConfiguration; overload;
+    function RedirectURI: String; overload;
+    function RefreshToken(Value: String): iConfiguration; overload;
+    function RefreshToken: String; overload;
+    function TestToken(Value: String): iConfiguration; overload;
+    function TestToken: String; overload;
+  end;
+
+implementation
+
+function TConfiguration.ClientId(Value: String): iConfiguration;
+begin
+  Result := Self;
+  FClientId := Value;
+end;
+
+function TConfiguration.ClientId: String;
+begin
+  Result := FClientId;
+end;
+
+function TConfiguration.ClientSecret: String;
+begin
+  Result := FClientSecret;
+end;
+
+function TConfiguration.ClientSecret(Value: String): iConfiguration;
+begin
+  Result := Self;
+  FClientSecret := Value;
+end;
+
+function TConfiguration.Code(Value: String): iConfiguration;
+begin
+  Result := Self;
+  FCode := Value;
+end;
+
+function TConfiguration.Code: String;
+begin
+  Result := FCode;
+end;
+
+function TConfiguration.GrantType(Value: String): iConfiguration;
+begin
+  Result := Self;
+  FGrantType := Value;
+end;
+
+function TConfiguration.GrantType: String;
+begin
+  Result := FGrantType;
+end;
+
+class function TConfiguration.New: iConfiguration;
+begin
+  Result := Self.Create;
+end;
+
+function TConfiguration.RedirectURI: String;
+begin
+  Result := FRedirectURI;
+end;
+
+function TConfiguration.RedirectURI(Value: String): iConfiguration;
+begin
+  Result := Self;
+  FRedirectURI := Value;
+end;
+
+function TConfiguration.RefreshToken(Value: String): iConfiguration;
+begin
+  Result := Self;
+  FRefreshToken := Value;
+end;
+
+function TConfiguration.RefreshToken: String;
+begin
+  Result := FRefreshToken;
+end;
+
+function TConfiguration.TestToken(Value: String): iConfiguration;
+begin
+  Result := Self;
+  FTestToken := Value;
+end;
+
+function TConfiguration.TestToken: String;
+begin
+  Result := FTestToken;
+end;
+
+end.

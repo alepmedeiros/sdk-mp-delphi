@@ -1,0 +1,25 @@
+unit mercdopago4D.serializable.monday;
+
+interface
+
+uses
+  GBJSON.Attributes;
+
+type
+  TMonday = class
+  private
+  public
+    [JSONProp('')]
+    [JSONProp('')]
+
+    class function New: TMonday;
+  end;
+
+implementation
+
+class function TMonday.New: TMonday;
+begin
+  Result := Self.Create;
+end;
+
+end.

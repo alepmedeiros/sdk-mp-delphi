@@ -1,0 +1,34 @@
+unit mercdopago4D.serializable.devices;
+
+interface
+
+uses
+  GBJSON.Attributes;
+
+type
+  TDevicesSerialize = class
+  private
+    [JSONProp('id')]
+    FId: String;
+    [JSONProp('operating_mode')]
+    FOperatingMode: String;
+  public
+    function Id(Value: String): TDevicesSerialize; overload;
+    function Id: String; overload;
+    function OperatingMode(Value: String): TDevicesSerialize; overload;
+    function OperatingMode: String; overload;
+//    property Id: String read FId write FId;
+//
+//    property OperatingMode: String read FOperatingMode write FOperatingMode;
+
+    class function New: TDevicesSerialize;
+  end;
+
+implementation
+
+class function TDevicesSerialize.New: TDevicesSerialize;
+begin
+  Result := Self.Create;
+end;
+
+end.

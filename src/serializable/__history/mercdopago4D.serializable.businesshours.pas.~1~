@@ -1,0 +1,40 @@
+unit mercdopago4D.serializable.businesshours;
+
+interface
+
+uses
+  GBJSON.Attributes;
+
+type
+  TBusinessHours = class
+  private
+
+    constructor Create;
+    destructor Destroy; override;
+  public
+    [JSONProp('monday')]
+    [JSONProp('tuesday')]
+    [JSONProp('wednesday')]
+
+    class function New: TBusinessHours;
+  end;
+
+implementation
+
+constructor TBusinessHours.Create;
+begin
+
+end;
+
+destructor TBusinessHours.Destroy;
+begin
+
+  inherited;
+end;
+
+class function TBusinessHours.New: TBusinessHours;
+begin
+  Result := Self.Create;
+end;
+
+end.

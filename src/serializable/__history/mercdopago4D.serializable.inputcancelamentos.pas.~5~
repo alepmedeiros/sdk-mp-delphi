@@ -1,0 +1,48 @@
+unit mercdopago4D.serializable.inputcancelamentos;
+
+interface
+
+uses
+  GBJSON.Attributes,
+  mercdopago4D.serializable.address;
+
+type
+  TInput = class
+  private
+    FStatus: String;
+    FAddress: TAddress;
+    FDateRegistered: TDateTime;
+    FDefaultAddress: String;
+    FDefaultCard: String;
+    FDescription: String;
+  public
+    [JSONProp('status')]
+    property Status: String read FStatus write FStatus;
+    [JSONProp('address')]
+    property Address: TAddress read FAddress write FAddress;
+    [JSONProp('date_registered')]
+    property DateRegistered: TDateTime read FDateRegistered write FDateRegistered;
+    [JSONProp('default_address')]
+    property DefaultAddress: String read FDefaultAddress write FDefaultAddress;
+    [JSONProp('default_card')]
+    property DefaultCard: String read FDefaultCard write FDefaultCard;
+    [JSONProp('description')]
+    property Description: String read FDescription write FDescription;
+    [JSONProp('email')]
+    [JSONProp('first_name')]
+    [JSONProp('identification')]
+    [JSONProp('last_name')]
+    [JSONProp('phone')]
+
+    class function New: TInput;
+  end;
+
+implementation
+
+
+class function TInput.New: TInput;
+begin
+  Result := Self.Create;
+end;
+
+end.

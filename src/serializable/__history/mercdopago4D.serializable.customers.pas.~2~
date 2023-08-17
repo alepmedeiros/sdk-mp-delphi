@@ -1,0 +1,38 @@
+unit mercdopago4D.serializable.customers;
+
+interface
+
+uses
+  GBJSON.Attributes,
+  mercdopago4D.serializable.address,
+  mercdopago4D.serializable.identification, mercdopago4D.serializable.phone;
+
+type
+  TInput = class
+  private
+    FStatus: String;
+    FAddress: TAddress;
+    FDateRegistered: TDateTime;
+    FDefaultAddress: String;
+    FDefaultCard: String;
+    FDescription: String;
+    FEmail: String;
+    FFirstName: String;
+    FIdentification: TIdentification;
+    FLastName: String;
+    FPhone: TPhone;
+  public
+    [JSONProp('status')]
+    property Status: String read FStatus write FStatus;
+
+    class function New: TInput;
+  end;
+
+implementation
+
+class function TInput.New: TInput;
+begin
+  Result := Self.Create;
+end;
+
+end.

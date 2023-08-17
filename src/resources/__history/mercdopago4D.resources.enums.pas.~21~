@@ -1,0 +1,55 @@
+unit mercdopago4D.resources.enums;
+
+interface
+
+type
+  TBaseURL = (BASEURL);
+
+  TResource = (CANCELAMENTO, CLIENTES, CLIENTES_SEARCH, MEIOPAGAMENTO, OAUTH,
+    PEDIDOSCOMERCIAIS, PEDIDOSCOMERCIAIS_SEARCH, PAGAMENTOS, PAGAMENTOS_SEARCH,
+    PREFERENCIA, PREFERENCIA_SEARCH, REEMBOLSO, REEBOLSO_PAY, CARTOES, USUARIO_TESTE,
+    TIPO_PAGAMENTO, CAIXA);
+
+  TBaseURLHelper = record helper for TBaseURL
+    function ToString: String;
+  end;
+
+  TResourceHelper = record helper for TResource
+    function ToString: String;
+  end;
+
+implementation
+
+function TBaseURLHelper.ToString: String;
+begin
+  case Self of
+    BASEURL: Result := 'https://api.mercadopago.com';
+  end;
+end;
+
+{ TResourcesHelper }
+
+function TResourceHelper.ToString: String;
+begin
+  case Self of
+    CANCELAMENTO: Result := '/payments/%s';
+    CLIENTES: Result := '/v1/customers/%s';
+    CLIENTES_SEARCH: Result := '/v1/customers/search';
+    MEIOPAGAMENTO: Result := '/v1/payment_methods';
+    OAUTH: Result := '/oauth/token';
+    PEDIDOSCOMERCIAIS: Result := '/merchant_orders/%s';
+    PEDIDOSCOMERCIAIS_SEARCH: Result := '/merchant_orders/search';
+    PAGAMENTOS: Result := '/v1/payments/%s';
+    PAGAMENTOS_SEARCH: Result := '/v1/payments/search';
+    PREFERENCIA: Result := '/checkout/preferences/%s';
+    PREFERENCIA_SEARCH: Result := '/checkout/preferences/search';
+    REEMBOLSO: Result := '/v1/chargebacks/%s';
+    REEBOLSO_PAY: Result := '/v1/payments/%s/refunds/%s';
+    CARTOES: Result := '/v1/customers/%s/cards/%s';
+    USUARIO_TESTE: Result := '/users/test';
+    TIPO_PAGAMENTO: Result := '/v1/identification_types';
+    CAIXA: Result := '/pos/%s';
+  end;
+end;
+
+end.

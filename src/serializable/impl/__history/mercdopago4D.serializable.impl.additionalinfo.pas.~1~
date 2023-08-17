@@ -1,0 +1,36 @@
+unit mercdopago4D.serializable.impl.additionalinfo;
+
+interface
+
+uses
+  mercdopago4D.serializable.interfaces;
+
+type
+  TSerializableAdditionalInfo = class(TInterfacedObject, iSerializableAdditionalInfo)
+  private
+    constructor Create;
+    destructor Destroy; override;
+  public
+    class function New: iSerializableAdditionalInfo;
+  end;
+
+implementation
+
+
+constructor TSerializableAdditionalInfo.Create;
+begin
+
+end;
+
+destructor TSerializableAdditionalInfo.Destroy;
+begin
+
+  inherited;
+end;
+
+class function TSerializableAdditionalInfo.New: iSerializableAdditionalInfo;
+begin
+  Result := Self.Create;
+end;
+
+end.

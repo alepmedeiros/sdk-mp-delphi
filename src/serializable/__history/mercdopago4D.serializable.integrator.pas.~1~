@@ -1,0 +1,27 @@
+unit mercdopago4D.serializable.integrator;
+
+interface
+
+uses
+  System.Generics.Collections,
+  GBJSON.Attributes;
+
+type
+  TIntegrator = class
+  private
+    FEventChannelDevices: TList<String>;
+  public
+    [JSONProp('event_channel_devices')]
+    property EventChannelDevices: TList<String> read FEventChannelDevices write FEventChannelDevices;
+
+    class function New: TIntegrator;
+  end;
+
+implementation
+
+class function TIntegrator.New: TIntegrator;
+begin
+  Result := Self.Create;
+end;
+
+end.
