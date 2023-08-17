@@ -1,0 +1,27 @@
+unit MercadoPago4D;
+
+interface
+
+uses
+  mercdopago4D,
+  mercdopago4D.interfaces;
+
+var
+  MP4D: iMP4D;
+
+implementation
+
+const
+  ClientId = '5882422820672306';
+  ClientSecret = 'G11aBdGuw8QDKOfGDGvRtGQelBNmCmJz';
+  Code = 'TG-649c66df995b520001d24bc2-17552238';
+  RedirectURI = 'https://academiadocodigo.com.br';
+
+initialization
+
+MP4D := TMP4D.New;
+
+MP4D.Configuration.ClientId(ClientId).ClientSecret(ClientSecret).Code(Code)
+  .RedirectURI(RedirectURI);
+
+end.

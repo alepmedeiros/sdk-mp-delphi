@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/06/29 13:41:00.000.998,=C:\Users\aleme\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2023/06/29 13:45:37.000.199,C:\Users\aleme\OneDrive\Documentos\Embarcadero\Studio\Projects\DemoMP4D.dproj=C:\Users\aleme\OneDrive\Documentos\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2023/06/29 13:45:59.000.727,D:\MyRepository\MercadoPago4D\sample\demo\Unit2.pas=C:\Users\aleme\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2023/06/29 13:45:59.000.727,D:\MyRepository\MercadoPago4D\sample\demo\Unit2.dfm=C:\Users\aleme\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit2.dfm</Transaction>
+    <Transaction>2023/06/29 13:46:08.000.778,D:\MyRepository\MercadoPago4D\sample\demo\DemoMP4D.dproj=C:\Users\aleme\OneDrive\Documentos\Embarcadero\Studio\Projects\DemoMP4D.dproj</Transaction>
+    <Transaction>2023/06/29 13:47:23.000.596,=D:\MyRepository\MercadoPago4D\sample\demo\Unit1.pas</Transaction>
+    <Transaction>2023/06/29 13:54:06.000.270,D:\MyRepository\MercadoPago4D\sample\demo\MercadoPago4D.pas=D:\MyRepository\MercadoPago4D\sample\demo\Unit1.pas</Transaction>
+    <Transaction>2023/06/30 10:54:11.000.955,=D:\MyRepository\MercadoPago4D\sample\demo\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>
