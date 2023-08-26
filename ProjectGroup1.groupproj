@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{AE009BDB-2287-43A8-B873-C26566E193AD}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="MercadoPago4D.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="exemplos\demo\DemoMP4D.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="MercadoPago4D">
+        <MSBuild Projects="MercadoPago4D.dproj"/>
+    </Target>
+    <Target Name="MercadoPago4D:Clean">
+        <MSBuild Projects="MercadoPago4D.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MercadoPago4D:Make">
+        <MSBuild Projects="MercadoPago4D.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="DemoMP4D">
+        <MSBuild Projects="exemplos\demo\DemoMP4D.dproj"/>
+    </Target>
+    <Target Name="DemoMP4D:Clean">
+        <MSBuild Projects="exemplos\demo\DemoMP4D.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DemoMP4D:Make">
+        <MSBuild Projects="exemplos\demo\DemoMP4D.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="MercadoPago4D;DemoMP4D"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="MercadoPago4D:Clean;DemoMP4D:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="MercadoPago4D:Make;DemoMP4D:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
