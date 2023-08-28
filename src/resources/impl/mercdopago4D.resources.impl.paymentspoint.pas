@@ -91,16 +91,12 @@ end;
 
 function TPaymentsPoint.Return: iReturns<TEvent>;
 begin
-  if not Assigned(FReturn) then
-    FReturn := TReturns<TEvent>.New(FEvent,FHttpClient.Content);
-  Result := FReturn;
+  Result := TReturns<TEvent>.New(FEvent,FHttpClient.Content);
 end;
 
 function TPaymentsPoint.Returns: iReturns<TPaymentIntents>;
 begin
-  if not Assigned(FReturns) then
-    FReturns:= TReturns<TPaymentIntents>.New(FPayments,FHttpClient.Content);
-  Result := FReturns;
+  Result := TReturns<TPaymentIntents>.New(FPayments,FHttpClient.Content);
 end;
 
 function TPaymentsPoint.SearchPaymentIntent(IdPayment: String): iPaymentsPoint;

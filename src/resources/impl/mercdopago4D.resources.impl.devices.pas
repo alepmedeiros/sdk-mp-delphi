@@ -89,16 +89,12 @@ end;
 
 function TDevices.RetunrDevice: iReturns<TDevicesSerialize>;
 begin
-  if not Assigned(FRetDevices) then
-    FRetDevices := TReturns<TDevicesSerialize>.New(FDevice, FHttpCliente.Content);
-  Result := FRetDevices;
+  Result := TReturns<TDevicesSerialize>.New(FDevice, FHttpCliente.Content);
 end;
 
 function TDevices.Returns: iReturns<TPaginationDevices>;
 begin
-  if not Assigned(FReturn) then
-    FReturn := TReturns<TPaginationDevices>.New(FDevies, FHttpCliente.Content);
-  Result := FReturn;
+  Result := TReturns<TPaginationDevices>.New(FDevies, FHttpCliente.Content);
 end;
 
 end.

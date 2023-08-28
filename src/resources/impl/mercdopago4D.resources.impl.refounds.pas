@@ -91,21 +91,21 @@ end;
 
 function TRefounds.ReturnChargeback: iReturns<TChargebacks>;
 begin
-  if not Assigned(FChargeback) then
-  begin
+//  if not Assigned(FChargeback) then
+//  begin
     var lChargeback := TChargebacks.New;
     FChargeback := TReturns<TChargebacks>.New(lChargeback, FHttpCliente.Content);
-  end;
+//  end;
   Result := FChargeback;
 end;
 
 function TRefounds.ReturnRefounds: iReturns<TSerializableRefunds>;
 begin
-  if not Assigned(FRefounds) then
-  begin
+//  if not Assigned(FRefounds) then
+//  begin
     var lRefounds := TSerializableRefunds.New;
     FRefounds := TReturns<TSerializableRefunds>.New(lRefounds, FHttpCliente.Content);
-  end;
+//  end;
   Result := FRefounds;
 end;
 

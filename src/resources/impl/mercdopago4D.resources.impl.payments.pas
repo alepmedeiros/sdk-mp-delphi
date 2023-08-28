@@ -77,9 +77,7 @@ end;
 
 function TPayments.Returns: iReturns<TPaginationPayments>;
 begin
-  if not Assigned(FReturns) then
-    FReturns:= TReturns<TPaginationPayments>.New(FPayments,FHttpCliente.Content);
-  Result := FReturns;
+  Result := TReturns<TPaginationPayments>.New(FPayments,FHttpCliente.Content);
 end;
 
 function TPayments.UpdatePayment: iPayments;
